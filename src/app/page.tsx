@@ -126,9 +126,9 @@ const legWorkout: Exercise[] = [
     rest: '90 seconds',
   },
   {
-    name: 'Leg Press',
-    weight: 'Machine',
-    progression: '50–60 kg',
+    name: 'Barbell Front Squats',
+    weight: 'Barbell (1.8 kg) + 2 × 2.5 kg + 2 × 1.25 kg = 9.8 kg',
+    progression: 'Add up to 2 × 0.5 kg per side to reach 10.8 kg',
     sets: 3,
     reps: '12–15',
     rest: '90 seconds',
