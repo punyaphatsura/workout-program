@@ -83,10 +83,101 @@ const legCooldown: CooldownExercise[] = [
   },
 ];
 
+// Upper body cooldowns for Upper #1 and Upper #2
+const upperBodyCooldown: CooldownExercise[] = [
+  {
+    name: 'Shoulder Stretch (แขนข้ามหน้า)',
+    targetMuscleGroup: 'Shoulders',
+    description:
+      'Bring one arm across your chest and use the opposite hand to gently pull it closer to your body.',
+    duration: '20–30 seconds per side',
+  },
+  {
+    name: 'Triceps Stretch (เอื้อมแตะหลังศอก)',
+    targetMuscleGroup: 'Triceps',
+    description:
+      'Raise one arm overhead, bend the elbow to reach and touch your back. Use the opposite hand to gently pull the elbow back.',
+    duration: '20–30 seconds per side',
+  },
+  {
+    name: 'Chest Opener (จับผนังแล้วบิดตัวออก)',
+    targetMuscleGroup: 'Chest & Front Shoulders',
+    description:
+      'Place your hand against a wall, then slowly twist your body away from the wall to open up your chest.',
+    duration: '20–30 seconds per side',
+  },
+  {
+    name: 'Lat Stretch (จับโหนเหยียดตัว หรือเอาแขนพาดโต๊ะแล้วก้มตัว)',
+    targetMuscleGroup: 'Lats & Side Body',
+    description:
+      'Hang from a bar to stretch your lats, or place your arm on a table and bend down to stretch the side body.',
+    duration: '20–30 seconds per side',
+  },
+  {
+    name: 'Neck Stretch (เอียงคอ ซ้าย/ขวา ค้างไว้)',
+    targetMuscleGroup: 'Neck & Upper Traps',
+    description:
+      'Gently tilt your head to one side (left/right) and hold the position to stretch your neck and upper traps.',
+    duration: '20–30 seconds per side',
+  },
+  {
+    name: 'Wrist Stretch (งอข้อมือ บิดเข้าหาตัว)',
+    targetMuscleGroup: 'Wrists & Forearms',
+    description:
+      'Bend your wrist and gently twist it toward your body to stretch your wrists and forearms.',
+    duration: '20–30 seconds per side',
+  },
+];
+
+// Lower body cooldowns for Lower #1 and Lower #2  
+const lowerBodyCooldown: CooldownExercise[] = [
+  {
+    name: 'Quad Stretch (ดึงปลายเท้าไปด้านหลัง)',
+    targetMuscleGroup: 'Quadriceps',
+    description:
+      'Stand on one leg and pull your foot toward your glutes from behind to stretch your quadriceps.',
+    duration: '30 seconds per side',
+  },
+  {
+    name: 'Hamstring Stretch (เหยียดขาแล้วโน้มตัว)',
+    targetMuscleGroup: 'Hamstrings',
+    description:
+      'Extend your leg and lean your body forward to stretch your hamstring muscles.',
+    duration: '30 seconds per side',
+  },
+  {
+    name: 'Calf Stretch (ยันกำแพง เท้ายืนห่างกัน)',
+    targetMuscleGroup: 'Calves',
+    description:
+      'Push against a wall with your feet positioned apart, keeping the back leg straight to stretch your calf.',
+    duration: '30 seconds per side',
+  },
+  {
+    name: 'Glute Stretch (นั่งไขว่ห้าง โน้มตัว)',
+    targetMuscleGroup: 'Glutes',
+    description:
+      'Sit cross-legged and lean your body forward to stretch your glute muscles.',
+    duration: '30 seconds per side',
+  },
+  {
+    name: 'Hip Flexor Stretch (เข่าหนึ่งข้างยันพื้น อีกข้างยื่นไปหน้า)',
+    targetMuscleGroup: 'Hip Flexors',
+    description:
+      'Place one knee on the ground and extend the other leg forward, then push your hips forward to stretch the hip flexors.',
+    duration: '30 seconds per side',
+  },
+];
+
 const cooldowns: { [key: string]: CooldownExercise[] } = {
+  // Legacy workout types (keeping for compatibility)
   'Push Day': pushCooldown,
   'Pull Day': pullCooldown,
   'Leg Day': legCooldown,
+  // New Upper/Lower split workout types
+  'Upper #1': upperBodyCooldown,
+  'Upper #2': upperBodyCooldown,
+  'Lower #1': lowerBodyCooldown,
+  'Lower #2': lowerBodyCooldown,
 };
 
 interface CooldownProps {
@@ -131,10 +222,13 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
       className='bg-white rounded-2xl shadow-xl p-6 max-w-2xl min-w-[672px] mx-auto'>
       <div className='text-center mb-6'>
         <h2 className='text-2xl font-bold text-emerald-600 mb-2'>
-          Cooldown Stretches
+          🔹 Post-Workout Stretches
         </h2>
-        <p className='text-gray-600'>
+        <p className='text-gray-600 mb-2'>
           Complete these stretches to help your muscles recover
+        </p>
+        <p className='text-sm text-emerald-700 font-medium'>
+          💡 If any area feels very tight, do 2 rounds of stretching
         </p>
       </div>
 

@@ -21,7 +21,7 @@ type Exercise = {
   weight?: string;
   sets: number;
   reps?: string;
-  rest: string;
+  rest: number;
   time?: string;
   progression?: string;
 };
@@ -29,50 +29,50 @@ type Exercise = {
 const upper1Workout: Exercise[] = [
   {
     name: 'Bench Press / Machine Press',
-    weight: 'Start with comfortable weight',
+    weight: '25 kg',
     sets: 4,
     reps: '8–10',
-    rest: '2-3 minutes',
+    rest: 180,
     progression: 'Heavy but controlled weight',
   },
   {
     name: 'Lat Pulldown / Pull-Up Assist',
-    weight: 'Moderate weight',
+    weight: '23 kg',
     sets: 4,
-    reps: '10',
-    rest: '2 minutes',
+    reps: '12',
+    rest: 120,
     progression: 'Focus on middle back',
   },
   {
     name: 'Dumbbell Shoulder Press',
-    weight: 'Light to moderate dumbbells',
+    weight: '5 kg each',
     sets: 3,
-    reps: '10',
-    rest: '90 seconds',
+    reps: '12',
+    rest: 90,
     progression: 'Front shoulders + good balance',
   },
   {
     name: 'Cable Row / Barbell Row',
-    weight: 'Moderate weight',
-    sets: 3,
+    weight: '23 kg',
+    sets: 4,
     reps: '12',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Focus on back + squeeze shoulder blades at end of set',
   },
   {
     name: 'Tricep Pushdown',
-    weight: 'Light to moderate',
+    weight: '8-13 kg',
     sets: 3,
     reps: '12',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Back of arms',
   },
   {
     name: 'Bicep Curl (DB / EZ Bar)',
-    weight: 'Light to moderate dumbbells or EZ bar',
+    weight: '5 kg each',
     sets: 3,
     reps: '12',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Front of arms',
   },
   {
@@ -80,7 +80,7 @@ const upper1Workout: Exercise[] = [
     weight: 'Bodyweight',
     sets: 3,
     time: '45 seconds',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Six-pack starts here',
   },
 ];
@@ -91,7 +91,7 @@ const lower1Workout: Exercise[] = [
     weight: 'Start light, use Smith Machine if new',
     sets: 4,
     reps: '10',
-    rest: '2-3 minutes',
+    rest: 180,
     progression: 'If new, use Smith Machine',
   },
   {
@@ -99,7 +99,7 @@ const lower1Workout: Exercise[] = [
     weight: 'Moderate dumbbells',
     sets: 3,
     reps: '10',
-    rest: '2 minutes',
+    rest: 120,
     progression: 'Back thigh + glutes definition',
   },
   {
@@ -107,7 +107,7 @@ const lower1Workout: Exercise[] = [
     weight: 'Bodyweight or light dumbbells',
     sets: 3,
     reps: '10 per side',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Glutes + core',
   },
   {
@@ -115,7 +115,7 @@ const lower1Workout: Exercise[] = [
     weight: 'Machine weight',
     sets: 3,
     reps: '12',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Back thigh',
   },
   {
@@ -123,7 +123,7 @@ const lower1Workout: Exercise[] = [
     weight: 'Machine weight',
     sets: 3,
     reps: '12',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Front thigh',
   },
   {
@@ -131,7 +131,7 @@ const lower1Workout: Exercise[] = [
     weight: 'Bodyweight or machine',
     sets: 3,
     reps: '20',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Tight front shins',
   },
   {
@@ -139,7 +139,7 @@ const lower1Workout: Exercise[] = [
     weight: 'Bodyweight',
     sets: 3,
     reps: '15',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Lower abs',
   },
 ];
@@ -150,7 +150,7 @@ const upper2Workout: Exercise[] = [
     weight: 'Moderate weight',
     sets: 4,
     reps: '8–10',
-    rest: '2-3 minutes',
+    rest: 180,
     progression: 'Upper chest',
   },
   {
@@ -158,7 +158,7 @@ const upper2Workout: Exercise[] = [
     weight: 'Light to moderate dumbbells',
     sets: 3,
     reps: '10',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Front + side shoulders',
   },
   {
@@ -166,7 +166,7 @@ const upper2Workout: Exercise[] = [
     weight: 'Moderate dumbbell',
     sets: 3,
     reps: '12',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Side back',
   },
   {
@@ -174,7 +174,7 @@ const upper2Workout: Exercise[] = [
     weight: 'Light weight',
     sets: 3,
     reps: '15',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Rear shoulders to prevent slouching',
   },
   {
@@ -182,7 +182,7 @@ const upper2Workout: Exercise[] = [
     weight: 'Light weight',
     sets: 3,
     reps: '15',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Beautiful side shoulders',
   },
   {
@@ -190,7 +190,7 @@ const upper2Workout: Exercise[] = [
     weight: 'Light dumbbells + bodyweight',
     sets: 3,
     reps: '12',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'End the day with solid arms',
   },
   {
@@ -198,7 +198,7 @@ const upper2Workout: Exercise[] = [
     weight: 'Bodyweight',
     sets: 3,
     time: '30 seconds per side',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Create a beautiful waist',
   },
 ];
@@ -209,7 +209,7 @@ const lower2Workout: Exercise[] = [
     weight: 'Bodyweight or light dumbbells',
     sets: 3,
     reps: '8 per side',
-    rest: '2 minutes',
+    rest: 120,
     progression: 'Difficult but super worth it',
   },
   {
@@ -217,7 +217,7 @@ const lower2Workout: Exercise[] = [
     weight: 'Bodyweight or barbell',
     sets: 4,
     reps: '10',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Rock solid glutes',
   },
   {
@@ -225,7 +225,7 @@ const lower2Workout: Exercise[] = [
     weight: 'Light to moderate dumbbells',
     sets: 3,
     reps: '12',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Thighs + balance',
   },
   {
@@ -233,7 +233,7 @@ const lower2Workout: Exercise[] = [
     weight: 'Bodyweight or dumbbell',
     sets: 3,
     reps: '12',
-    rest: '90 seconds',
+    rest: 90,
     progression: 'Wide stance, focus inner thigh + glutes',
   },
   {
@@ -241,7 +241,7 @@ const lower2Workout: Exercise[] = [
     weight: 'Bodyweight',
     sets: 3,
     time: '30 seconds',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Core + fat burning',
   },
   {
@@ -249,7 +249,7 @@ const lower2Workout: Exercise[] = [
     weight: 'Bodyweight',
     sets: 3,
     reps: '15',
-    rest: '60 seconds',
+    rest: 60,
     progression: 'Lower abs',
   },
 ];
@@ -266,6 +266,7 @@ export default function Home() {
   const [selectedDay, setSelectedDay] = useState('');
   const [isManualMode, setIsManualMode] = useState(false);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
+  const [inProgressExercises, setInProgressExercises] = useState<string[]>([]);
   const [showCooldown, setShowCooldown] = useState(false);
   const [isTimerVisible, setIsTimerVisible] = useState(true);
   // const [copiedExercise, setCopiedExercise] = useState<string | null>(null);
@@ -303,6 +304,10 @@ export default function Home() {
   //     });
   // };
 
+  const toggleTimerVisibility = () => {
+    setIsTimerVisible((prev) => !prev);
+  };
+
   const handleFinishCooldown = () => {
     // Reset to auto-detect mode and clear completed exercises
     const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
@@ -311,6 +316,7 @@ export default function Home() {
     setSelectedDay(today);
     setIsManualMode(false);
     setCompletedExercises([]);
+    setInProgressExercises([]);
     setShowCooldown(false);
   };
 
@@ -318,8 +324,9 @@ export default function Home() {
     setSelectedDay(day);
     setIsManualMode(true);
     setCurrentWorkout(program[day as keyof typeof program] || 'Rest Day');
-    // Reset completed exercises when changing workout
+    // Reset completed and in progress exercises when changing workout
     setCompletedExercises([]);
+    setInProgressExercises([]);
   };
 
   const toggleAutoDetect = () => {
@@ -330,17 +337,27 @@ export default function Home() {
       setCurrentWorkout(defaultWorkout);
       setSelectedDay(today);
       setIsManualMode(false);
-      // Reset completed exercises
+      // Reset completed and in progress exercises
       setCompletedExercises([]);
+      setInProgressExercises([]);
     }
   };
 
-  const toggleExerciseCompletion = (exerciseName: string) => {
-    setCompletedExercises((prev) =>
-      prev.includes(exerciseName)
-        ? prev.filter((name) => name !== exerciseName)
-        : [...prev, exerciseName]
-    );
+  const toggleExerciseState = (exerciseName: string) => {
+    const isCompleted = completedExercises.includes(exerciseName);
+    const isInProgress = inProgressExercises.includes(exerciseName);
+
+    if (isCompleted) {
+      // Completed → To Do (remove from completed)
+      setCompletedExercises((prev) => prev.filter((name) => name !== exerciseName));
+    } else if (isInProgress) {
+      // In Progress → Completed (remove from progress, add to completed)
+      setInProgressExercises((prev) => prev.filter((name) => name !== exerciseName));
+      setCompletedExercises((prev) => [...prev, exerciseName]);
+    } else {
+      // To Do → In Progress (clear all in progress, then add this one)
+      setInProgressExercises([exerciseName]);
+    }
   };
 
   const finishWorkout = () => {
@@ -351,12 +368,8 @@ export default function Home() {
   const isFinishable =
     currentWorkout !== 'Rest Day' &&
     workouts[currentWorkout as keyof typeof workouts]?.some((exercise) =>
-      completedExercises.includes(exercise.name)
+      completedExercises.includes(exercise.name) || inProgressExercises.includes(exercise.name)
     );
-
-  const toggleTimerVisibility = () => {
-    setIsTimerVisible((prev) => !prev);
-  };
 
   return (
     <div className='bg-gradient-to-br overflow-visible from-gray-100 to-gray-200 min-h-screen flex items-center justify-center p-4'>
@@ -371,7 +384,7 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
             className='text-center text-3xl font-extrabold text-white tracking-tight'>
-            🏋️‍♂️ ตารางเวท 4 วัน/สัปดาห์ (Upper / Lower Split)
+            Weight Training (Upper / Lower Split)
           </motion.h1>
           <motion.h2
             initial={{ y: 20, opacity: 0 }}
@@ -384,7 +397,9 @@ export default function Home() {
         {currentWorkout !== 'Rest Day' && (
           <WorkoutTimer 
             isVisible={isTimerVisible} 
-            onToggleVisibility={toggleTimerVisibility} 
+            onToggleVisibility={toggleTimerVisibility}
+            inProgressExercises={inProgressExercises}
+            currentWorkoutExercises={workouts[currentWorkout as keyof typeof workouts] || []}
           />
         )}
         {/* Day Selection Section */}
@@ -469,7 +484,7 @@ export default function Home() {
                             // type: 'spring',
                           }}
                           onClick={() =>
-                            toggleExerciseCompletion(exercise.name)
+                            toggleExerciseState(exercise.name)
                           }
                           className={`
                             cursor-pointer border-2 rounded-xl p-4 shadow-sm 
@@ -478,6 +493,8 @@ export default function Home() {
                             ${
                               completedExercises.includes(exercise.name)
                                 ? 'bg-emerald-50 border-emerald-300 hover:bg-emerald-100'
+                                : inProgressExercises.includes(exercise.name)
+                                ? 'bg-amber-50 border-amber-300 hover:bg-amber-100'
                                 : 'bg-white border-gray-200 hover:bg-gray-50'
                             }
                           `}>
@@ -490,11 +507,16 @@ export default function Home() {
                                   ${
                                     completedExercises.includes(exercise.name)
                                       ? 'bg-emerald-500 border-emerald-500'
+                                      : inProgressExercises.includes(exercise.name)
+                                      ? 'bg-amber-500 border-amber-500'
                                       : 'border-gray-300'
                                   }
                                 `}>
                                 {completedExercises.includes(exercise.name) && (
                                   <Check size={16} color='white' />
+                                )}
+                                {inProgressExercises.includes(exercise.name) && !completedExercises.includes(exercise.name) && (
+                                  <div className='w-2 h-2 bg-white rounded-full animate-pulse' />
                                 )}
                               </motion.div>
                               <h4
@@ -503,6 +525,8 @@ export default function Home() {
                                 ${
                                   completedExercises.includes(exercise.name)
                                     ? 'text-emerald-700 line-through'
+                                    : inProgressExercises.includes(exercise.name)
+                                    ? 'text-amber-700'
                                     : 'text-emerald-600'
                                 }
                               `}>
@@ -535,6 +559,8 @@ export default function Home() {
                                 ${
                                   completedExercises.includes(exercise.name)
                                     ? 'bg-emerald-200 text-emerald-900'
+                                    : inProgressExercises.includes(exercise.name)
+                                    ? 'bg-amber-200 text-amber-900'
                                     : 'bg-emerald-100 text-emerald-800'
                                 }
                               `}>
@@ -558,7 +584,7 @@ export default function Home() {
                               <p className='font-bold text-black text-sm'>
                                 Rest
                               </p>
-                              <p>{exercise.rest}</p>
+                              <p>{exercise.rest} seconds</p>
                             </div>
                             <div>
                               <p className='font-bold text-black text-sm'>
@@ -570,6 +596,31 @@ export default function Home() {
                         </motion.div>
                       )
                     )}
+                  </div>
+                  
+                  {/* Exercise State Guide */}
+                  <div className='mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200'>
+                    <p className='text-sm text-gray-600 text-center mb-2'>
+                      <strong>Click to cycle through states:</strong> (Only 1 exercise can be in progress)
+                    </p>
+                    <div className='flex justify-center gap-4 text-xs'>
+                      <div className='flex items-center gap-1'>
+                        <div className='w-3 h-3 rounded-full border-2 border-gray-300'></div>
+                        <span className='text-gray-600'>To Do</span>
+                      </div>
+                      <div className='flex items-center gap-1'>
+                        <div className='w-3 h-3 rounded-full bg-amber-500 border-2 border-amber-500 flex items-center justify-center'>
+                          <div className='w-1 h-1 bg-white rounded-full animate-pulse'></div>
+                        </div>
+                        <span className='text-amber-700'>In Progress</span>
+                      </div>
+                      <div className='flex items-center gap-1'>
+                        <div className='w-3 h-3 rounded-full bg-emerald-500 border-2 border-emerald-500 flex items-center justify-center'>
+                          <Check size={8} color='white' />
+                        </div>
+                        <span className='text-emerald-700'>Finished</span>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               )}
