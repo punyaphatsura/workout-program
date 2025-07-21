@@ -7,13 +7,13 @@ import WorkoutTimer from '@/components/WorkoutTimer';
 import WorkoutCooldown from '@/components/WorkoutCooldown';
 
 const program = {
-  Monday: 'Push Day',
-  Tuesday: 'Bodyweight Day',
+  Monday: 'Upper #1',
+  Tuesday: 'Lower #1', 
   Wednesday: 'Rest Day',
-  Thursday: 'Pull Day',
-  Friday: 'Leg Day',
-  Saturday: 'Push Day',
-  Sunday: 'Pull Day',
+  Thursday: 'Upper #2',
+  Friday: 'Lower #2',
+  Saturday: 'Rest Day',
+  Sunday: 'Rest Day',
 };
 
 type Exercise = {
@@ -26,180 +26,239 @@ type Exercise = {
   progression?: string;
 };
 
-const pushWorkout: Exercise[] = [
+const upper1Workout: Exercise[] = [
   {
-    name: 'Barbell Bench Press',
-    weight: 'Barbell (1.8 kg) + 2 × 2.5 kg + 2 × 1.25 kg = 9.8 kg',
-    progression: 'Add up to 2 × 0.5 kg per side to reach 10.8 kg',
+    name: 'Bench Press / Machine Press',
+    weight: 'Start with comfortable weight',
     sets: 4,
     reps: '8–10',
-    rest: '90 seconds',
+    rest: '2-3 minutes',
+    progression: 'Heavy but controlled weight',
   },
   {
-    name: 'Incline Dumbbell Press',
-    weight: 'Dumbbell (0.7 kg each) + 2 × 1.25 kg = 3.2 kg per hand',
-    progression: 'Add 0.5 kg per hand to reach 3.7 kg',
-    sets: 3,
-    reps: '10–12',
-    rest: '90 seconds',
+    name: 'Lat Pulldown / Pull-Up Assist',
+    weight: 'Moderate weight',
+    sets: 4,
+    reps: '10',
+    rest: '2 minutes',
+    progression: 'Focus on middle back',
   },
   {
-    name: 'Overhead Shoulder Press',
-    weight: 'Dumbbell (0.7 kg each) + 2 × 1.25 kg = 3.2 kg per hand',
-    progression: 'Add 0.5 kg per hand to reach 3.7 kg',
+    name: 'Dumbbell Shoulder Press',
+    weight: 'Light to moderate dumbbells',
     sets: 3,
-    reps: '10–12',
+    reps: '10',
+    rest: '90 seconds',
+    progression: 'Front shoulders + good balance',
+  },
+  {
+    name: 'Cable Row / Barbell Row',
+    weight: 'Moderate weight',
+    sets: 3,
+    reps: '12',
+    rest: '90 seconds',
+    progression: 'Focus on back + squeeze shoulder blades at end of set',
+  },
+  {
+    name: 'Tricep Pushdown',
+    weight: 'Light to moderate',
+    sets: 3,
+    reps: '12',
     rest: '60 seconds',
+    progression: 'Back of arms',
   },
   {
-    name: 'Tricep Dips',
+    name: 'Bicep Curl (DB / EZ Bar)',
+    weight: 'Light to moderate dumbbells or EZ bar',
+    sets: 3,
+    reps: '12',
+    rest: '60 seconds',
+    progression: 'Front of arms',
+  },
+  {
+    name: 'Plank Hold',
     weight: 'Bodyweight',
     sets: 3,
-    reps: '12–15',
+    time: '45 seconds',
     rest: '60 seconds',
-  },
-  {
-    name: 'Lateral Raises',
-    weight: 'Dumbbell (0.7 kg each) + 2 × 0.5 kg = 1.7 kg per hand',
-    progression: 'Add up to 1.25 kg per hand',
-    sets: 3,
-    reps: '12–15',
-    rest: '60 seconds',
+    progression: 'Six-pack starts here',
   },
 ];
-const pullWorkout: Exercise[] = [
+
+const lower1Workout: Exercise[] = [
   {
-    name: 'Deadlifts',
-    weight: 'Barbell (1.8 kg) + 2 × 2.5 kg + 2 × 1.25 kg = 9.8 kg',
-    progression: 'Add 0.5 kg per side to reach 10.8 kg',
+    name: 'Barbell Back Squat',
+    weight: 'Start light, use Smith Machine if new',
     sets: 4,
-    reps: '6–8',
-    rest: '90 seconds',
+    reps: '10',
+    rest: '2-3 minutes',
+    progression: 'If new, use Smith Machine',
   },
   {
-    name: 'Pull-Ups',
+    name: 'Romanian Deadlift (DB)',
+    weight: 'Moderate dumbbells',
+    sets: 3,
+    reps: '10',
+    rest: '2 minutes',
+    progression: 'Back thigh + glutes definition',
+  },
+  {
+    name: 'Walking Lunge',
+    weight: 'Bodyweight or light dumbbells',
+    sets: 3,
+    reps: '10 per side',
+    rest: '90 seconds',
+    progression: 'Glutes + core',
+  },
+  {
+    name: 'Leg Curl (Machine)',
+    weight: 'Machine weight',
+    sets: 3,
+    reps: '12',
+    rest: '90 seconds',
+    progression: 'Back thigh',
+  },
+  {
+    name: 'Leg Extension (Machine)',
+    weight: 'Machine weight',
+    sets: 3,
+    reps: '12',
+    rest: '90 seconds',
+    progression: 'Front thigh',
+  },
+  {
+    name: 'Calf Raise',
+    weight: 'Bodyweight or machine',
+    sets: 3,
+    reps: '20',
+    rest: '60 seconds',
+    progression: 'Tight front shins',
+  },
+  {
+    name: 'Hanging Leg Raise / Sit-up',
     weight: 'Bodyweight',
     sets: 3,
-    reps: '8–10',
-    rest: '90 seconds',
-  },
-  {
-    name: 'Bent-Over Barbell Rows',
-    weight: 'Barbell (1.8 kg) + 2 × 2.5 kg + 2 × 1.25 kg = 9.8 kg',
-    progression: 'Add 0.5 kg per side to reach 10.8 kg',
-    sets: 3,
-    reps: '8–10',
-    rest: '90 seconds',
-  },
-  {
-    name: 'Dumbbell Curls',
-    weight: 'Dumbbell (0.7 kg each) + 2 × 1.25 kg = 3.2 kg per hand',
-    progression: 'Add 0.5 kg per hand to reach 3.7 kg',
-    sets: 3,
-    reps: '10–12',
+    reps: '15',
     rest: '60 seconds',
-  },
-  {
-    name: 'Bent-Over Reverse Flyes',
-    weight: 'Dumbbell (0.7 kg each) + 2 × 1.25 kg = 3.2 kg per hand',
-    progression: '3–5 kg per hand',
-    sets: 3,
-    reps: '12–15',
-    rest: '60 seconds',
+    progression: 'Lower abs',
   },
 ];
-const legWorkout: Exercise[] = [
+
+const upper2Workout: Exercise[] = [
   {
-    name: 'Back Squats',
-    weight: 'Barbell (1.8 kg) + 2 × 2.5 kg + 2 × 1.25 kg = 9.8 kg',
-    progression: 'Add 0.5 kg per side to reach 10.8 kg',
+    name: 'Incline Bench Press',
+    weight: 'Moderate weight',
     sets: 4,
     reps: '8–10',
-    rest: '90 seconds',
+    rest: '2-3 minutes',
+    progression: 'Upper chest',
   },
   {
-    name: 'Romanian Deadlifts',
-    weight: 'Barbell (1.8 kg) + 2 × 2.5 kg + 2 × 1.25 kg = 9.8 kg',
-    progression: 'Add 0.5 kg per side to reach 10.8 kg',
+    name: 'Arnold Press (Dumbbell)',
+    weight: 'Light to moderate dumbbells',
     sets: 3,
-    reps: '10–12',
+    reps: '10',
     rest: '90 seconds',
+    progression: 'Front + side shoulders',
   },
   {
-    name: 'Barbell Front Squats',
-    weight: 'Barbell (1.8 kg) + 2 × 2.5 kg + 2 × 1.25 kg = 9.8 kg',
-    progression: 'Add up to 2 × 0.5 kg per side to reach 10.8 kg',
+    name: 'One-arm Dumbbell Row',
+    weight: 'Moderate dumbbell',
     sets: 3,
-    reps: '12–15',
+    reps: '12',
     rest: '90 seconds',
+    progression: 'Side back',
   },
   {
-    name: 'Lunges',
-    weight: 'Dumbbell (0.7 kg each) + 2 × 1.25 kg = 3.2 kg per hand',
-    progression: 'Add 0.5 kg per hand to reach 3.7 kg',
+    name: 'Face Pull / Reverse Fly',
+    weight: 'Light weight',
     sets: 3,
-    reps: '10–12 per leg',
+    reps: '15',
     rest: '60 seconds',
+    progression: 'Rear shoulders to prevent slouching',
   },
   {
-    name: 'Calf Raises',
-    weight: 'Bodyweight or Machine',
+    name: 'Cable Lateral Raise',
+    weight: 'Light weight',
     sets: 3,
-    reps: '15–20',
+    reps: '15',
     rest: '60 seconds',
+    progression: 'Beautiful side shoulders',
+  },
+  {
+    name: 'Hammer Curl + Tricep Dip (Super Set)',
+    weight: 'Light dumbbells + bodyweight',
+    sets: 3,
+    reps: '12',
+    rest: '90 seconds',
+    progression: 'End the day with solid arms',
+  },
+  {
+    name: 'Side Plank',
+    weight: 'Bodyweight',
+    sets: 3,
+    time: '30 seconds per side',
+    rest: '60 seconds',
+    progression: 'Create a beautiful waist',
   },
 ];
-const bodyweightWorkout: Exercise[] = [
+
+const lower2Workout: Exercise[] = [
   {
-    name: 'Push-Ups',
+    name: 'Bulgarian Split Squat',
+    weight: 'Bodyweight or light dumbbells',
     sets: 3,
-    reps: '10–15',
-    rest: '60 seconds',
-    progression: 'Increase reps or try incline/decline variations',
+    reps: '8 per side',
+    rest: '2 minutes',
+    progression: 'Difficult but super worth it',
   },
   {
-    name: 'Bodyweight Squats',
-    sets: 3,
-    reps: '15–20',
-    rest: '60 seconds',
-    progression: 'Increase reps or try jump squats',
+    name: 'Glute Bridge / Hip Thrust',
+    weight: 'Bodyweight or barbell',
+    sets: 4,
+    reps: '10',
+    rest: '90 seconds',
+    progression: 'Rock solid glutes',
   },
   {
-    name: 'Plank',
+    name: 'Dumbbell Step Up',
+    weight: 'Light to moderate dumbbells',
     sets: 3,
-    time: '30–60 seconds',
-    rest: '60 seconds',
-    progression: 'Increase hold time or add shoulder taps',
+    reps: '12',
+    rest: '90 seconds',
+    progression: 'Thighs + balance',
   },
   {
-    name: 'Lunges',
+    name: 'Sumo Squat',
+    weight: 'Bodyweight or dumbbell',
     sets: 3,
-    reps: '10–12 per leg',
-    rest: '60 seconds',
-    progression: 'Increase reps or add a jump between lunges',
+    reps: '12',
+    rest: '90 seconds',
+    progression: 'Wide stance, focus inner thigh + glutes',
   },
   {
-    name: 'Glute Bridges',
-    sets: 3,
-    reps: '15–20',
-    rest: '60 seconds',
-    progression:
-      'Hold the top position for a few seconds or try single-leg variations',
-  },
-  {
-    name: 'Superman Hold',
+    name: 'Mountain Climbers',
+    weight: 'Bodyweight',
     sets: 3,
     time: '30 seconds',
     rest: '60 seconds',
-    progression: 'Increase hold time or add pulses',
+    progression: 'Core + fat burning',
+  },
+  {
+    name: 'Hanging Leg Raise',
+    weight: 'Bodyweight',
+    sets: 3,
+    reps: '15',
+    rest: '60 seconds',
+    progression: 'Lower abs',
   },
 ];
 
 const workouts: { [key: string]: Exercise[] } = {
-  'Push Day': pushWorkout,
-  'Pull Day': pullWorkout,
-  'Leg Day': legWorkout,
-  'Bodyweight Day': bodyweightWorkout,
+  'Upper #1': upper1Workout,
+  'Lower #1': lower1Workout,
+  'Upper #2': upper2Workout,
+  'Lower #2': lower2Workout,
 };
 
 export default function Home() {
@@ -208,6 +267,7 @@ export default function Home() {
   const [isManualMode, setIsManualMode] = useState(false);
   const [completedExercises, setCompletedExercises] = useState<string[]>([]);
   const [showCooldown, setShowCooldown] = useState(false);
+  const [isTimerVisible, setIsTimerVisible] = useState(true);
   // const [copiedExercise, setCopiedExercise] = useState<string | null>(null);
 
   useEffect(() => {
@@ -294,6 +354,10 @@ export default function Home() {
       completedExercises.includes(exercise.name)
     );
 
+  const toggleTimerVisibility = () => {
+    setIsTimerVisible((prev) => !prev);
+  };
+
   return (
     <div className='bg-gradient-to-br overflow-visible from-gray-100 to-gray-200 min-h-screen flex items-center justify-center p-4'>
       <motion.div
@@ -307,7 +371,7 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
             className='text-center text-3xl font-extrabold text-white tracking-tight'>
-            Beginner Weight Training Program
+            🏋️‍♂️ ตารางเวท 4 วัน/สัปดาห์ (Upper / Lower Split)
           </motion.h1>
           <motion.h2
             initial={{ y: 20, opacity: 0 }}
@@ -317,7 +381,12 @@ export default function Home() {
             Today: {currentWorkout}
           </motion.h2>
         </div>
-        {currentWorkout !== 'Rest Day' && <WorkoutTimer />}
+        {currentWorkout !== 'Rest Day' && (
+          <WorkoutTimer 
+            isVisible={isTimerVisible} 
+            onToggleVisibility={toggleTimerVisibility} 
+          />
+        )}
         {/* Day Selection Section */}
         <div className='p-4 bg-gray-50 flex flex-wrap justify-center gap-2'>
           {Object.keys(program).map((day) => (
