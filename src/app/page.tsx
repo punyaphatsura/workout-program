@@ -503,7 +503,7 @@ export default function Home() {
                               <motion.div
                                 whileTap={{ scale: 0.9 }}
                                 className={`
-                                  w-6 h-6 rounded-full border-2 flex items-center justify-center
+                                  w-6 h-6 shrink-0 rounded-full border-2 flex items-center justify-center
                                   ${
                                     completedExercises.includes(exercise.name)
                                       ? 'bg-emerald-500 border-emerald-500'
@@ -601,7 +601,7 @@ export default function Home() {
                   {/* Exercise State Guide */}
                   <div className='mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200'>
                     <p className='text-sm text-gray-600 text-center mb-2'>
-                      <strong>Click to cycle through states:</strong> (Only 1 exercise can be in progress)
+                      <strong>Click to cycle through states</strong>
                     </p>
                     <div className='flex justify-center gap-4 text-xs'>
                       <div className='flex items-center gap-1'>

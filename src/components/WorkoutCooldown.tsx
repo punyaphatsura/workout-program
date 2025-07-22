@@ -188,6 +188,7 @@ interface CooldownProps {
 const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
   const [completedStretches, setCompletedStretches] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<'next' | 'prev'>('next');
 
   const exercises = cooldowns[workoutType] || [];
   const currentExercise = exercises[currentIndex];
@@ -204,12 +205,14 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
 
   const handleNext = () => {
     if (currentIndex < exercises.length - 1) {
+      setDirection('next');
       setCurrentIndex((prev) => prev + 1);
     }
   };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
+      setDirection('prev');
       setCurrentIndex((prev) => prev - 1);
     }
   };
@@ -219,30 +222,46 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className='bg-white rounded-2xl shadow-xl p-6 max-w-2xl min-w-[672px] mx-auto'>
-      <div className='text-center mb-6'>
-        <h2 className='text-2xl font-bold text-emerald-600 mb-2'>
+      className='bg-white rounded-2xl overflow-hidden shadow-xl p-4 sm:p-6 w-full max-w-2xl mx-auto'>
+      <div className='text-center mb-4 sm:mb-6'>
+        <h2 className='text-xl sm:text-2xl font-bold text-emerald-600 mb-2'>
           🔹 Post-Workout Stretches
         </h2>
-        <p className='text-gray-600 mb-2'>
+        <p className='text-sm sm:text-base text-gray-600 mb-2'>
           Complete these stretches to help your muscles recover
         </p>
-        <p className='text-sm text-emerald-700 font-medium'>
+        <p className='text-xs sm:text-sm text-emerald-700 font-medium'>
           💡 If any area feels very tight, do 2 rounds of stretching
         </p>
       </div>
 
       <div className='relative'>
-        <AnimatePresence mode='wait'>
+        <AnimatePresence mode='wait' custom={direction}>
           <motion.div
             key={currentExercise.name}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            className='bg-gray-50 rounded-xl p-6 mb-4'>
-            <div className='flex items-center justify-between mb-4'>
+            custom={direction}
+            variants={{
+              enter: (direction) => ({
+                x: direction === 'next' ? 680 : -680,
+                // opacity: 0
+              }),
+              center: {
+                x: 0,
+                opacity: 1
+              },
+              exit: (direction) => ({
+                x: direction === 'next' ? -680 : 680,
+                // opacity: 0
+              })
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className='bg-gray-50 rounded-xl p-4 sm:p-6 mb-4'>
+            <div className='flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2'>
               <div className='flex items-center gap-2'>
-                <h3 className='text-xl font-semibold text-gray-800'>
+                <h3 className='text-lg sm:text-xl font-semibold text-gray-800'>
                   {currentExercise.name}
                 </h3>
 
@@ -256,26 +275,18 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
                       '_blank'
                     );
                   }}
-                  className='text-sm text-blue-500 hover:underline'>
-                  {/* {copiedExercise === exercise.name ? (
-                    <div className='p-0.5 rounded-full bg-emerald-500 flex items-center justify-center'>
-                    <Check size={16} color='white' />
-                    </div>
-                ) : (
-                    <Copy size={16} color='rgb(4 120 87)' />
-                )} */}
-
+                  className='text-sm text-blue-500 hover:underline flex-shrink-0'>
                   <Copy size={16} color='rgb(4 120 87)' />
                 </button>
               </div>
-              <span className='px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm'>
+              <span className='px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm self-start sm:self-auto'>
                 {currentExercise.targetMuscleGroup}
               </span>
             </div>
 
-            <p className='text-gray-600 mb-4'>{currentExercise.description}</p>
+            <p className='text-gray-600 mb-4 text-sm sm:text-base'>{currentExercise.description}</p>
 
-            <div className='flex items-center gap-2 text-sm text-gray-500 mb-4'>
+            <div className='flex items-center gap-2 text-xs sm:text-sm text-gray-500 mb-4'>
               <Timer size={16} />
               <span>{currentExercise.duration}</span>
             </div>
@@ -284,7 +295,7 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => toggleStretchCompletion(currentExercise.name)}
-              className={`w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors ${
+              className={`w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors text-sm sm:text-base ${
                 completedStretches.includes(currentExercise.name)
                   ? 'bg-emerald-500 text-white'
                   : 'bg-emerald-100 text-emerald-700'
@@ -301,13 +312,13 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
           </motion.div>
         </AnimatePresence>
 
-        <div className='flex justify-between mt-6'>
+        <div className='flex flex-col sm:flex-row justify-between mt-6 gap-3 sm:gap-0'>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handlePrevious}
             disabled={currentIndex === 0}
-            className={`px-4 py-2 rounded-lg ${
+            className={`px-4 py-2 rounded-lg text-sm sm:text-base ${
               currentIndex === 0
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -320,7 +331,7 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleNext}
-              className='px-4 py-2 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 flex items-center gap-2'>
+              className='px-4 py-2 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 flex items-center justify-center gap-2 text-sm sm:text-base'>
               Next <ChevronRight size={16} />
             </motion.button>
           ) : (
@@ -329,7 +340,7 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
               whileTap={{ scale: 0.95 }}
               onClick={onFinishCooldown}
               disabled={!allStretchesCompleted}
-              className={`px-4 py-2 rounded-lg flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-lg flex items-center justify-center gap-2 text-sm sm:text-base ${
                 allStretchesCompleted
                   ? 'bg-emerald-500 text-white hover:bg-emerald-600'
                   : 'bg-gray-200 text-gray-500 cursor-not-allowed'
@@ -341,7 +352,7 @@ const WorkoutCooldown = ({ workoutType, onFinishCooldown }: CooldownProps) => {
         </div>
       </div>
 
-      <div className='mt-6 flex justify-center gap-2'>
+      <div className='mt-4 sm:mt-6 flex justify-center gap-2'>
         {exercises.map((_, index) => (
           <motion.div
             key={index}
